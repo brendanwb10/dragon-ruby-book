@@ -1,0 +1,53 @@
+* 000000 [Engine] Log started at 2024/4/5 21:28:26
+* 000000 [Engine] DragonRuby Game Toolkit
+* 000000 [Engine]   Version: 5.23
+* 000000 [Engine]   Tier: Standard
+* 000000 [Engine]   GIT Hash: c3daf92d5fe946df1af006654159ee89db37ba67
+* 000000 [Engine]   Build Date: Mar 26 2024 21:12:42
+* 000000 [Engine] Platform: Mac OS X
+* 000000 [Engine] 
+* 000000 [Engine] *******************************************************************************************
+* 000000 [Engine] *** This is the Standard license build!                                                 ***
+* 000000 [Engine] *** Get more with an Indie or Pro license such as C extensions, mobile dev, and VR dev! ***
+* 000000 [Engine] *** Details at http://dragonruby.org/toolkit/game#purchase                              ***
+* 000000 [Engine] *******************************************************************************************
+* 000000 [Engine] 
+! 000000 [Engine] Metadata file does not have all required fields!
+- 000000 [Engine] Game Dir: /Users/brendanbuckingham/dragonruby-gtk-macos/dragonruby-macos//mygame
+- 000000 [Engine] Game ID: hello-SDL
+- 000000 [Engine] Game Title: Update metadata/game_metadata.txt in your mygame directory to change this title.
+- 000000 [Engine] Game Version: 1.0
+- 000000 [Engine] Game Package ID: org.dragonruby.hello-SDL
+- 000000 [Engine] Game Developer ID: dragonruby
+- 000000 [Engine] Game Developer Title: DragonRuby LLC
+- 000000 [Engine] Production Build: no
+- 000000 [Engine] Remote Hotload: no
+? 000000 [Engine] Loading cvars from file 'metadata/cvars.txt' ...
+? 000000 [Engine] File 'metadata/cvars.txt' line 1 setting cvar 'log.filter_subsystems' to 'HTTPServer'
+? 000000 [Engine] File 'metadata/cvars.txt' complete
+- 000001 [Render] SDL video backend: cocoa
+- 000001 [Render] SDL renderer backend: metal
+- 000001 [Render] Window size: 1280x720 (requested 1280x720)
+- 000001 [Render] Fullscreen Desktop mode: no
+- 000001 [Render] HD: no
+- 000001 [Render] HighDPI: no
+- 000001 [Render] Max texture size: 16384x16384 (system reported 16384x16384)
+- 000001 [Render] Logical render size: 1280x720
+- 000001 [Render] Native render size: 1280x720
+? 000001 [Engine] RNG seed has been set to 1712370508.
+- 000001 [Engine] Janitor is using 4 threads.
+? 000076 [Engine] Reloaded app/main.rb. (4500)
+? 000133 [Engine] Reloaded app/main.rb. (7917)
+- 000250 [Game] * INFO: New methods discovered.
+** :greet
+
+? 000250 [Engine] Reloaded app/main.rb. (14937)
+? 000352 [Engine] Reloaded app/main.rb. (21056)
+? 000385 [Engine] Reloaded app/main.rb. (23036)
+? 000568 [Engine] Reloaded app/main.rb. (34016)
+? 000672 [Engine] Reloaded app/main.rb. (40256)
+? 000743 [Engine] Reloaded app/main.rb. (44516)
+? 000838 [Engine] Reloaded app/main.rb. (50216)
+? 000929 [Engine] Reloaded app/main.rb. (55676)
+? 000940 [Engine] Reloaded app/main.rb. (56336)
+? 001007 [Engine] Reloaded app/main.rb. (60356)

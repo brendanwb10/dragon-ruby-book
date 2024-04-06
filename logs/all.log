@@ -1,0 +1,204 @@
+* INFO: Replay started =replay.txt= speed: 1. (0)
+* INFO: Replay ends in 39 second(s). (0)
+* INFO: Replay ends in 38 second(s). (60)
+* INFO: Replay ends in 37 second(s). (120)
+* INFO: Replay ends in 36 second(s). (180)
+* INFO: Replay ends in 35 second(s). (240)
+* INFO: Replay ends in 34 second(s). (300)
+* INFO: Replay ends in 33 second(s). (360)
+* INFO: Replay ends in 32 second(s). (420)
+* INFO: Replay ends in 31 second(s). (480)
+* INFO: Replay ends in 30 second(s). (540)
+* INFO: Replay ends in 29 second(s). (600)
+* INFO: Replay ends in 28 second(s). (660)
+* INFO: Replay ends in 27 second(s). (720)
+* INFO: Replay ends in 26 second(s). (780)
+* INFO: Replay ends in 25 second(s). (840)
+* INFO: Replay ends in 24 second(s). (900)
+* INFO: Replay ends in 23 second(s). (960)
+* INFO: Replay ends in 22 second(s). (1020)
+* INFO: Replay ends in 21 second(s). (1080)
+* INFO: Replay ends in 20 second(s). (1140)
+* INFO: Replay ends in 19 second(s). (1200)
+* INFO: Replay ends in 18 second(s). (1260)
+* INFO: Replay ends in 17 second(s). (1320)
+* INFO: Replay ends in 16 second(s). (1380)
+* INFO: Replay ends in 15 second(s). (1440)
+* INFO: Replay ends in 14 second(s). (1500)
+* INFO: Replay started =replay.txt= speed: 1. (0)
+* INFO: Replay ends in 44 second(s). (0)
+* WARNING: ~Outputs#sounds~ no longer supports looping (one-time sounds are still supported).
+
+Use ~Args#audio~ instead for looping sounds.
+
+Here's how to migrate looping sounds. Here's an example of bg music being started on tick zero:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      # bg music will not loop after completion
+      # use args.audio to create a looping (see below)
+      args.outputs.sounds << "sounds/bg-music.ogg"
+    end
+  end
+#+end_src
+
+The example above becomes:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      args.audio[:bg_music] = { input: "sounds/bg-music.ogg", looping: true }
+    end
+  end
+#+end_src
+
+Additional options that can be passed to ~Args#audio~:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      args.audio[:bg_music] = {
+        input:  "sounds/bg-music.ogg",
+        looping: true,
+        gain:    1.0,
+        pitch:   1.0,
+        paused:  false,
+        # additional keys/values to help with context (metadata) can be added safely
+      }
+    end
+  end
+#+end_src
+
+You can use ~Args#audio~ for one time sounds too.
+
+The following is still valid/supported:
+
+#+begin_src
+  def tick args
+    # play a non-looping sound every second
+    if (args.state.tick_count % 60) == 0
+      args.outputs.sounds << "sounds/coin.wav"
+    end
+  end
+#+end_src
+
+But can be written to use ~args.audio~ as:
+
+#+begin_src
+  def tick args
+    if (args.state.tick_count % 60) == 0
+      args.audio[:coin] = { input: "sounds/coin.wav" }
+    end
+  end
+#+end_src
+* INFO: Replay ends in 43 second(s). (60)
+* INFO: Replay ends in 42 second(s). (120)
+* INFO: Replay ends in 41 second(s). (180)
+* INFO: Replay ends in 40 second(s). (240)
+* INFO: Replay ends in 39 second(s). (300)
+* INFO: Replay ends in 38 second(s). (360)
+* INFO: Replay ends in 37 second(s). (420)
+* INFO: Replay ends in 36 second(s). (480)
+* INFO: Replay ends in 35 second(s). (540)
+* INFO: Replay ends in 34 second(s). (600)
+* INFO: Replay ends in 33 second(s). (660)
+* INFO: Replay ends in 32 second(s). (720)
+* INFO: Replay ends in 31 second(s). (780)
+* INFO: Replay ends in 30 second(s). (840)
+* INFO: Replay ends in 29 second(s). (900)
+* INFO: Replay ends in 28 second(s). (960)
+* INFO: Replay ends in 27 second(s). (1020)
+* INFO: Replay ends in 26 second(s). (1080)
+* INFO: Replay ends in 25 second(s). (1140)
+* INFO: Replay ends in 24 second(s). (1200)
+* INFO: Replay ends in 23 second(s). (1260)
+* INFO: Replay ends in 22 second(s). (1320)
+* INFO: Replay ends in 21 second(s). (1380)
+* INFO: Replay ends in 20 second(s). (1440)
+* INFO: Replay ends in 19 second(s). (1500)
+* INFO: Replay ends in 18 second(s). (1560)
+* INFO: Replay ends in 17 second(s). (1620)
+* INFO: Replay ends in 16 second(s). (1680)
+* INFO: Replay ends in 15 second(s). (1740)
+* INFO: Replay ends in 14 second(s). (1800)
+* INFO: Replay ends in 13 second(s). (1860)
+* INFO: Replay ends in 12 second(s). (1920)
+* INFO: Replay ends in 11 second(s). (1980)
+* INFO: Replay ends in 10 second(s). (2040)
+* INFO: Replay ends in 9 second(s). (2100)
+* INFO: Replay ends in 8 second(s). (2160)
+* INFO: Replay ends in 7 second(s). (2220)
+* INFO: Replay ends in 6 second(s). (2280)
+* INFO: Replay ends in 5 second(s). (2340)
+* INFO: Replay ends in 4 second(s). (2400)
+* INFO: Replay ends in 3 second(s). (2460)
+* INFO: Replay ends in 2 second(s). (2520)
+* INFO: Replay ends in 1 second(s). (2580)
+* INFO: Replay ends in 0 second(s). (2640)
+* INFO: Replay completed [replay.txt]. To rerun, bring up the Console and press enter. (2685)
+* WARNING: ~Outputs#sounds~ no longer supports looping (one-time sounds are still supported).
+
+Use ~Args#audio~ instead for looping sounds.
+
+Here's how to migrate looping sounds. Here's an example of bg music being started on tick zero:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      # bg music will not loop after completion
+      # use args.audio to create a looping (see below)
+      args.outputs.sounds << "sounds/bg-music.ogg"
+    end
+  end
+#+end_src
+
+The example above becomes:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      args.audio[:bg_music] = { input: "sounds/bg-music.ogg", looping: true }
+    end
+  end
+#+end_src
+
+Additional options that can be passed to ~Args#audio~:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      args.audio[:bg_music] = {
+        input:  "sounds/bg-music.ogg",
+        looping: true,
+        gain:    1.0,
+        pitch:   1.0,
+        paused:  false,
+        # additional keys/values to help with context (metadata) can be added safely
+      }
+    end
+  end
+#+end_src
+
+You can use ~Args#audio~ for one time sounds too.
+
+The following is still valid/supported:
+
+#+begin_src
+  def tick args
+    # play a non-looping sound every second
+    if (args.state.tick_count % 60) == 0
+      args.outputs.sounds << "sounds/coin.wav"
+    end
+  end
+#+end_src
+
+But can be written to use ~args.audio~ as:
+
+#+begin_src
+  def tick args
+    if (args.state.tick_count % 60) == 0
+      args.audio[:coin] = { input: "sounds/coin.wav" }
+    end
+  end
+#+end_src

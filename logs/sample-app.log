@@ -1,0 +1,101 @@
+* 000000 [Engine] Log started at 2024/4/4 22:4:3
+* 000000 [Engine] DragonRuby Game Toolkit
+* 000000 [Engine]   Version: 5.23
+* 000000 [Engine]   Tier: Standard
+* 000000 [Engine]   GIT Hash: c3daf92d5fe946df1af006654159ee89db37ba67
+* 000000 [Engine]   Build Date: Mar 26 2024 21:12:42
+* 000000 [Engine] Platform: Mac OS X
+* 000000 [Engine] 
+* 000000 [Engine] *******************************************************************************************
+* 000000 [Engine] *** This is the Standard license build!                                                 ***
+* 000000 [Engine] *** Get more with an Indie or Pro license such as C extensions, mobile dev, and VR dev! ***
+* 000000 [Engine] *** Details at http://dragonruby.org/toolkit/game#purchase                              ***
+* 000000 [Engine] *******************************************************************************************
+* 000000 [Engine] 
+- 000000 [Engine] Game Dir: samples/99_genre_arcade/flappy_dragon
+- 000000 [Engine] Game ID: sample-app
+- 000000 [Engine] Game Title: Flappy Dragon
+- 000000 [Engine] Game Version: 1.0
+- 000000 [Engine] Game Package ID: org.dragonruby.sample-app
+- 000000 [Engine] Game Developer ID: dragonruby
+- 000000 [Engine] Game Developer Title: DragonRuby LLC
+- 000000 [Engine] Production Build: no
+- 000000 [Engine] Remote Hotload: no
+- 000000 [Render] SDL video backend: cocoa
+- 000000 [Render] SDL renderer backend: metal
+- 000000 [Render] Window size: 1280x720 (requested 1280x720)
+- 000000 [Render] Fullscreen Desktop mode: no
+- 000000 [Render] HD: no
+- 000000 [Render] HighDPI: no
+- 000000 [Render] Max texture size: 16384x16384 (system reported 16384x16384)
+- 000000 [Render] Logical render size: 1280x720
+- 000000 [Render] Native render size: 1280x720
+? 000000 [Engine] RNG seed has been set to 1712286243.
+- 000000 [Engine] Janitor is using 4 threads.
+- 000001 [Game] * WARNING: ~Outputs#sounds~ no longer supports looping (one-time sounds are still supported).
+
+Use ~Args#audio~ instead for looping sounds.
+
+Here's how to migrate looping sounds. Here's an example of bg music being started on tick zero:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      # bg music will not loop after completion
+      # use args.audio to create a looping (see below)
+      args.outputs.sounds << "sounds/bg-music.ogg"
+    end
+  end
+#+end_src
+
+The example above becomes:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      args.audio[:bg_music] = { input: "sounds/bg-music.ogg", looping: true }
+    end
+  end
+#+end_src
+
+Additional options that can be passed to ~Args#audio~:
+
+#+begin_src
+  def tick args
+    if args.state.tick_count == 0
+      args.audio[:bg_music] = {
+        input:  "sounds/bg-music.ogg",
+        looping: true,
+        gain:    1.0,
+        pitch:   1.0,
+        paused:  false,
+        # additional keys/values to help with context (metadata) can be added safely
+      }
+    end
+  end
+#+end_src
+
+You can use ~Args#audio~ for one time sounds too.
+
+The following is still valid/supported:
+
+#+begin_src
+  def tick args
+    # play a non-looping sound every second
+    if (args.state.tick_count % 60) == 0
+      args.outputs.sounds << "sounds/coin.wav"
+    end
+  end
+#+end_src
+
+But can be written to use ~args.audio~ as:
+
+#+begin_src
+  def tick args
+    if (args.state.tick_count % 60) == 0
+      args.audio[:coin] = { input: "sounds/coin.wav" }
+    end
+  end
+#+end_src
+
+* 000173 [Engine] Logging shutting down
